@@ -1,37 +1,70 @@
 # vue-testpress
 
-A experiment project on using testpress and vue-cli together.
+An experiment project on using testpress and vue-cli together.
 
-## Project setup
+## Live edit support
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
+### Install
 
 ```
-npm run serve
+npm i -D vuepress-plugin-live
 ```
 
-### Compiles and minifies for production
+### Config
 
-```
-npm run build
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
+```js
+// docs/.vuepress/config.js
+module.exports = {
+  plugins: [[["live"]]],
+};
 ```
 
-### Lints and fixes files
+### Usage
+
+Register component
+
+```js
+// docs/.vuepress/enhanceApp.js
+export default ({ Vue }) => {
+  Vue.component("HelloWorld", HelloWorld);
+};
+```
+
+Reference the registered component
+
+````
+```vue live
+<button>example</button>
+```
+````
+
+## TypeScript support
+
+### Install
 
 ```
-npm run lint
+npm i -D vuepress-plugin-typescript vuepress-types
 ```
 
-### Customize configuration
+### Config
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```js
+// docs/.vuepress/config.js
+module.exports = {
+  plugins: [
+    [
+      "vuepress-plugin-typescript",
+      {
+        tsLoaderOptions: {
+          transpileOnly: true,
+        },
+      },
+    ],
+  ],
+};
+```
+
+## Resources
+
+- https://www.karltarvas.com/2020/05/12/adding-vuepress-to-a-vue-cli-project-with-typescript.html
+- https://morioh.com/p/c59bb71f91b3

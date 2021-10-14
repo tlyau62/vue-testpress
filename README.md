@@ -77,9 +77,9 @@ module.exports = {
 2. git checkout gh-pages # git checkout --orphan gh-pages (first time)
 3. git add dist
 4. git commit -m "Add dist"
-5. rm docs
+5. rm docs -f
 6. mv dist docs
-7. git add -A
+7. git add docs
 8. git commit -m "Rename dist to docs"
 9. git push origin gh-pages
 

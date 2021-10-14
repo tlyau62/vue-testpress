@@ -91,4 +91,6 @@ module.exports = {
   ],
 
   dest: path.resolve(process.cwd(), "dist"),
+
+  base: "/vue-testpress",
 };

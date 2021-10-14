@@ -90,5 +90,5 @@ module.exports = {
     ],
   ],
 
-  dest: path.resolve(process.cwd(), "dist/docs"),
+  dest: path.resolve(process.cwd(), "dist"),
 };

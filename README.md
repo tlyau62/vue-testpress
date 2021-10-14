@@ -74,10 +74,10 @@ module.exports = {
 ## Publish to gitpages
 
 1. npm run doc:build
-2. git checkout --orphan gh-pages
+2. git checkout gh-pages # git checkout --orphan gh-pages (first time)
 3. git add dist
 4. git commit -m "Add dist"
-5. git clean -df
+5. rm docs
 6. mv dist docs
 7. git add -A
 8. git commit -m "Rename dist to docs"

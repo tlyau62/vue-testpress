@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "doc:dev": "vuepress dev docs/src",
+    "doc:build": "vuepress build docs/src"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -26,6 +28,8 @@
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^1.0.3",
+    "@vuepress/plugin-register-components": "^1.8.2",
+    "acorn-dynamic-import": "^4.0.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-vue": "^6.2.2",
@@ -33,6 +37,10 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "typescript": "~4.1.5",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-live": "^1.6.2",
+    "vuepress-plugin-typescript": "^0.3.1",
+    "vuepress-types": "^0.9.4"
   }
 }

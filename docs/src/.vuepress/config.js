@@ -1,5 +1,5 @@
 const { description } = require("../../../package");
-const { path } = require("path");
+const path = require("path");
 
 module.exports = {
   /**
@@ -89,4 +89,6 @@ module.exports = {
       },
     ],
   ],
+
+  dest: path.resolve(process.cwd(), "dist/docs"),
 };

@@ -2,6 +2,13 @@
 
 An experiment project on using testpress and vue-cli together.
 
+## Setup
+
+1. vue create testpress
+2. npx create-vuepress-site
+3. in the newly created docs folder, remove node_modules, and move all the npm config files to the root
+4. add _Live edit support_ and _TypeScript support_
+
 ## Live edit support
 
 ### Install
@@ -66,5 +73,6 @@ module.exports = {
 
 ## Resources
 
+- https://github.com/vuepress/create-vuepress-site
 - https://www.karltarvas.com/2020/05/12/adding-vuepress-to-a-vue-cli-project-with-typescript.html
 - https://morioh.com/p/c59bb71f91b3

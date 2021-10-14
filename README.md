@@ -71,6 +71,18 @@ module.exports = {
 };
 ```
 
+## Publish to gitpages
+
+1. npm run doc:build
+2. git checkout --orphan gh-pages
+3. git add dist
+4. git commit -m "Add dist"
+5. git clean -df
+6. mv dist docs
+7. git add -A
+8. git commit -m "Rename dist to docs"
+9. git push origin gh-pages
+
 ## Resources
 
 - https://github.com/vuepress/create-vuepress-site

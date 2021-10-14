@@ -75,7 +75,7 @@ module.exports = {
 
 ```
 npm run doc:build
-git checkout gh-pages # git checkout --orphan gh-pages (first time)
+git checkout gh-pages # git checkout -b gh-pages (first time)
 rm docs -r
 mv dist docs
 git add docs

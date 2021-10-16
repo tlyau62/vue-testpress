@@ -79,15 +79,6 @@ module.exports = {
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
     ["live", { noSsr: true }],
-    [
-      "vuepress-plugin-typescript",
-      {
-        tsLoaderOptions: {
-          transpileOnly: false,
-          compilerOptions: {},
-        },
-      },
-    ],
   ],
 
   dest: path.resolve(process.cwd(), "dist"),
@@ -104,22 +95,46 @@ module.exports = {
 
   chainWebpack: (config) => {
     /**
-     * Support tsx: https://github.com/vuejs/vuepress/issues/2893
+     * Source: https://github.com/TypeStrong/ts-loader/tree/v8.3.0#appendtsxsuffixto
      */
-    config.resolve.extensions.add(".tsx");
+    config.resolve.extensions.add(".ts").add(".tsx");
+
+    config.module
+      .rule("vue")
+      .test(/\.vue$/)
+      .use("vue-loader")
+      .loader("vue-loader")
+      .tap((opts) => {
+        opts.loaders = {
+          ...opts.loaders,
+          ts: "ts-loader",
+          tsx: "babel-loader!ts-loader",
+        };
+
+        return opts;
+      })
+      .end();
+
+    config.module
+      .rule("ts")
+      .test(/\.ts$/)
+      .use("ts-loader")
+      .loader("ts-loader")
+      .options({
+        appendTsSuffixTo: [/.vue$/, /.md$/],
+      })
+      .end();
 
     config.module
       .rule("tsx")
       .test(/\.tsx$/)
-      .use("cache-loader")
-      .loader(require.resolve("cache-loader"))
+      .use("babel-loader")
+      .loader("babel-loader")
       .end()
       .use("ts-loader")
-      .loader(require.resolve("ts-loader"))
+      .loader("ts-loader")
       .options({
-        appendTsSuffixTo: [/\.vue$/, /\.md$/],
-        compilerOptions: {},
-        transpileOnly: false,
+        appendTsxSuffixTo: [/.vue$/, /.md$/],
       })
       .end();
   },

@@ -14,6 +14,14 @@
 
 ## Example
 
+TS
+
 ```vue live
 <HelloWorld msg="hi"></HelloWorld>
+```
+
+TSX
+
+```vue live
+<HelloWorldTSX msg="hifromtsx"></HelloWorldTSX>
 ```

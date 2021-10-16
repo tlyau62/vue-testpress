@@ -1,4 +1,5 @@
-import HelloWorld from "../../../src/components/HelloWorld.vue";
+import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorldTSX from "@/components/HelloWorldTSX";
 
 /**
  * Client app enhancement file.
@@ -13,5 +14,6 @@ export default ({
   siteData, // site metadata
 }) => {
   Vue.component("HelloWorld", HelloWorld);
+  Vue.component("HelloWorldTSX", HelloWorldTSX);
   // ...apply enhancements for the site.
 };

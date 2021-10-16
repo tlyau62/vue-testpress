@@ -7,8 +7,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "doc:dev": "vuepress dev docs/src",
-    "doc:build": "vuepress build docs/src"
+    "docs": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "core-js": "^3.6.5",

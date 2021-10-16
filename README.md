@@ -14,8 +14,12 @@ An experiment project on using testpress and vue-cli together.
 ### Install
 
 ```
-npm i -D vuepress-plugin-live
+npm i -D vuepress-plugin-live acorn-dynamic-import
 ```
+
+::: tip
+acorn-dynamic-import must be installed in order for vuepress-plugin-live to work
+:::
 
 ### Config
 

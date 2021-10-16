@@ -78,13 +78,13 @@ module.exports = {
   plugins: [
     "@vuepress/plugin-back-to-top",
     "@vuepress/plugin-medium-zoom",
-    ["live", {}],
+    ["live", { noSsr: true }],
     [
       "vuepress-plugin-typescript",
       {
         tsLoaderOptions: {
-          // Vuepress compilation is ridiculously slow without this, type checking belongs in development not documentation anyway
-          transpileOnly: true,
+          transpileOnly: false,
+          compilerOptions: {},
         },
       },
     ],
@@ -93,4 +93,34 @@ module.exports = {
   dest: path.resolve(process.cwd(), "dist"),
 
   base: "/vue-testpress/",
+
+  configureWebpack: {
+    resolve: {
+      alias: {
+        "@": path.join(process.cwd(), "src"),
+      },
+    },
+  },
+
+  chainWebpack: (config) => {
+    /**
+     * Support tsx: https://github.com/vuejs/vuepress/issues/2893
+     */
+    config.resolve.extensions.add(".tsx");
+
+    config.module
+      .rule("tsx")
+      .test(/\.tsx$/)
+      .use("cache-loader")
+      .loader(require.resolve("cache-loader"))
+      .end()
+      .use("ts-loader")
+      .loader(require.resolve("ts-loader"))
+      .options({
+        appendTsSuffixTo: [/\.vue$/, /\.md$/],
+        compilerOptions: {},
+        transpileOnly: false,
+      })
+      .end();
+  },
 };
